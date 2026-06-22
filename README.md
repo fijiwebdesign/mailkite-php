@@ -18,7 +18,7 @@ require 'vendor/autoload.php';
 $mk = new \MailKite\Client(getenv('MAILKITE_API_KEY'));
 
 $res = $mk->send([
-    'from' => 'hello@yourapp.mailkite.dev',
+    'from' => 'hello@myapp.ai',
     'to' => 'ada@example.com',
     'subject' => 'Your invoice #1042',
     'html' => '<p>Thanks! Receipt attached.</p>',
@@ -31,7 +31,8 @@ Point at a different base URL with `new \MailKite\Client($key, 'https://api.mail
 
 `send($message)`, `listDomains()`, `createDomain($body)`, `getDomain($id)`,
 `deleteDomain($id)`, `verifyDomain($id)`, `setWebhook($id, $body)`,
-`deleteWebhook($id)`, `testWebhook($id)`, `listRoutes()`, `createRoute($body)`,
+`deleteWebhook($id)`, `testWebhook($id)`, `checkDomainAvailability($domain)`,
+`registerDomain($body)`, `listRoutes()`, `createRoute($body)`,
 `listMessages()`, `getMessage($id)`, `retryDelivery($id)`.
 
 ## Errors

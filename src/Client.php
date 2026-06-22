@@ -109,6 +109,16 @@ class Client
         return $this->request('POST', "/api/domains/$id/webhook/test");
     }
 
+    public function checkDomainAvailability(string $domain)
+    {
+        return $this->request('GET', '/api/domains/register/check?domain=' . rawurlencode($domain));
+    }
+
+    public function registerDomain($body)
+    {
+        return $this->request('POST', '/api/domains/register', $body);
+    }
+
     // --- Routes -----------------------------------------------------------
     public function listRoutes()
     {
