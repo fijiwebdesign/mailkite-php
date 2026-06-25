@@ -19,6 +19,7 @@ function call(Client $mk, string $m, array $a)
 {
     switch ($m) {
         case 'send': return $mk->send($a);
+        case 'uploadAttachment': return $mk->uploadAttachment($a);
         case 'agent': return $mk->agent($a);
         case 'route': return $mk->route($a);
         case 'listTemplates': return $mk->listTemplates();
@@ -42,6 +43,9 @@ function call(Client $mk, string $m, array $a)
         case 'retryDelivery': return $mk->retryDelivery($a['id']);
         case 'verifyWebhook': return $mk->verifyWebhook($a['signature'], $a['payload'], $a['secret'], (int) $a['toleranceMs']);
         case 'replyOk': return $mk->replyOk();
+        case 'replySpam': return $mk->replySpam();
+        case 'replyDrop': return $mk->replyDrop();
+        case 'replyBlockSender': return $mk->replyBlockSender();
         case 'decrypt': return $mk->decrypt($a['envelope'], $a['privateKey']);
         case 'encryptRoundtrip': return $mk->decrypt($mk->encrypt($a['plaintext'], $a['publicKey']), $a['privateKey']);
     }

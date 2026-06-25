@@ -75,6 +75,16 @@ class Client
     }
 
     /**
+     * Upload a file (base64 `content`) and get back a secure, time-limited URL to
+     * reference as a send() attachment ({ filename, url }) or link inline —
+     * instead of base64-inlining large files on every send.
+     */
+    public function uploadAttachment($file)
+    {
+        return $this->request('POST', '/v1/attachments', $file);
+    }
+
+    /**
      * Hand a message to the agent. Keys: text (required), plus optional
      * subject, from, html, routeId, address, model.
      */
@@ -234,6 +244,33 @@ class Client
     public function replyOk(): string
     {
         return '{"status":"ok"}';
+    }
+
+    /**
+     * Control-mode reply telling MailKite to mark the message as spam.
+     * Local, no network.
+     */
+    public function replySpam(): string
+    {
+        return '{"status":"spam"}';
+    }
+
+    /**
+     * Control-mode reply telling MailKite to drop (discard) the message.
+     * Local, no network.
+     */
+    public function replyDrop(): string
+    {
+        return '{"status":"drop"}';
+    }
+
+    /**
+     * Control-mode reply telling MailKite to block the sender.
+     * Local, no network.
+     */
+    public function replyBlockSender(): string
+    {
+        return '{"status":"ok","actions":[{"type":"block-sender"}]}';
     }
 
     // --- At-rest encryption ----------------------------------------------
