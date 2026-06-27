@@ -41,6 +41,18 @@ $res = $mk->send([
 ]);
 ```
 
+## Examples
+
+Runnable examples live in [`examples/`](examples/) — send mail, verify webhooks, build an AI email agent, and log users in:
+
+| Example | What it shows |
+| --- | --- |
+| [`examples/01-send-email.php`](examples/01-send-email.php) | Send an email over a verified domain — the 10-second "it works". |
+| [`examples/02-receive-webhook.php`](examples/02-receive-webhook.php) | Receive inbound email as a webhook — and VERIFY the HMAC signature before trusting it. |
+| [`examples/03-agent-reply.php`](examples/03-agent-reply.php) | An AI email agent: inbound email → Claude drafts a reply → MailKite sends it, threaded. |
+| [`examples/04-agent-inbox.php`](examples/04-agent-inbox.php) | Give your agent its own email address — MailKite's built-in inbox agent answers mail for… |
+| [`examples/05-server-login.php`](examples/05-server-login.php) | Server-side login + register. |
+
 ## API methods
 
 Every method is documented on its own page under [`docs/`](docs/). The full surface:
