@@ -336,6 +336,78 @@ class Client
         return $this->request('POST', "/api/deliveries/$id/retry");
     }
 
+    // --- Contact lists ----------------------------------------------------
+    public function listLists()
+    {
+        return $this->request('GET', '/api/lists');
+    }
+
+    public function createList($body)
+    {
+        return $this->request('POST', '/api/lists', $body);
+    }
+
+    public function getList(string $id)
+    {
+        return $this->request('GET', "/api/lists/$id");
+    }
+
+    public function updateList(string $id, $body)
+    {
+        return $this->request('PATCH', "/api/lists/$id", $body);
+    }
+
+    public function deleteList(string $id)
+    {
+        return $this->request('DELETE', "/api/lists/$id");
+    }
+
+    public function listListContacts(string $id)
+    {
+        return $this->request('GET', "/api/lists/$id/contacts");
+    }
+
+    public function addListContacts(string $id, $body)
+    {
+        return $this->request('POST', "/api/lists/$id/contacts", $body);
+    }
+
+    public function removeListContact(string $id, string $contactId)
+    {
+        return $this->request('DELETE', "/api/lists/$id/contacts/$contactId");
+    }
+
+    // --- Broadcasts -------------------------------------------------------
+    public function listBroadcasts()
+    {
+        return $this->request('GET', '/api/broadcasts');
+    }
+
+    public function createBroadcast($body)
+    {
+        return $this->request('POST', '/api/broadcasts', $body);
+    }
+
+    public function getBroadcast(string $id)
+    {
+        return $this->request('GET', "/api/broadcasts/$id");
+    }
+
+    public function updateBroadcast(string $id, $body)
+    {
+        return $this->request('PATCH', "/api/broadcasts/$id", $body);
+    }
+
+    public function deleteBroadcast(string $id)
+    {
+        return $this->request('DELETE', "/api/broadcasts/$id");
+    }
+
+    public function sendBroadcast(string $id, $body = null)
+    {
+        return $this->request('POST', "/api/broadcasts/$id/send", $body);
+    }
+
     // --- Webhooks ---------------------------------------------------------
     /**
      * Verify the `x-mailkite-signature` header on an inbound webhook delivery.
